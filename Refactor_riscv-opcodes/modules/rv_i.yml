@@ -1,0 +1,87 @@
+instructions:
+  - name: lui
+    format: "rd imm20 6..2=0x0D 1..0=3"
+  - name: auipc
+    format: "rd imm20 6..2=0x05 1..0=3"
+  - name: jal
+    format: "rd jimm20 6..2=0x1b 1..0=3"
+  - name: jalr
+    format: "rd rs1 imm12 14..12=0 6..2=0x19 1..0=3"
+  - name: beq
+    format: "bimm12hi rs1 rs2 bimm12lo 14..12=0 6..2=0x18 1..0=3"
+  - name: bne
+    format: "bimm12hi rs1 rs2 bimm12lo 14..12=1 6..2=0x18 1..0=3"
+  - name: blt
+    format: "bimm12hi rs1 rs2 bimm12lo 14..12=4 6..2=0x18 1..0=3"
+  - name: bge
+    format: "bimm12hi rs1 rs2 bimm12lo 14..12=5 6..2=0x18 1..0=3"
+  - name: bltu
+    format: "bimm12hi rs1 rs2 bimm12lo 14..12=6 6..2=0x18 1..0=3"
+  - name: bgeu
+    format: "bimm12hi rs1 rs2 bimm12lo 14..12=7 6..2=0x18 1..0=3"
+  - name: lb
+    format: "rd rs1 imm12 14..12=0 6..2=0x00 1..0=3"
+  - name: lh
+    format: "rd rs1 imm12 14..12=1 6..2=0x00 1..0=3"
+  - name: lw
+    format: "rd rs1 imm12 14..12=2 6..2=0x00 1..0=3"
+  - name: lbu
+    format: "rd rs1 imm12 14..12=4 6..2=0x00 1..0=3"
+  - name: lhu
+    format: "rd rs1 imm12 14..12=5 6..2=0x00 1..0=3"
+  - name: sb
+    format: "imm12hi rs1 rs2 imm12lo 14..12=0 6..2=0x08 1..0=3"
+  - name: sh
+    format: "imm12hi rs1 rs2 imm12lo 14..12=1 6..2=0x08 1..0=3"
+  - name: sw
+    format: "imm12hi rs1 rs2 imm12lo 14..12=2 6..2=0x08 1..0=3"
+  - name: addi
+    format: "rd rs1 imm12 14..12=0 6..2=0x04 1..0=3"
+  - name: slti
+    format: "rd rs1 imm12 14..12=2 6..2=0x04 1..0=3"
+  - name: sltiu
+    format: "rd rs1 imm12 14..12=3 6..2=0x04 1..0=3"
+  - name: xori
+    format: "rd rs1 imm12 14..12=4 6..2=0x04 1..0=3"
+  - name: ori
+    format: "rd rs1 imm12 14..12=6 6..2=0x04 1..0=3"
+  - name: andi
+    format: "rd rs1 imm12 14..12=7 6..2=0x04 1..0=3"
+  - name: add
+    format: "rd rs1 rs2 31..25=0 14..12=0 6..2=0x0C 1..0=3"
+  - name: sub
+    format: "rd rs1 rs2 31..25=32 14..12=0 6..2=0x0C 1..0=3"
+  - name: sll
+    format: "rd rs1 rs2 31..25=0 14..12=1 6..2=0x0C 1..0=3"
+  - name: slt
+    format: "rd rs1 rs2 31..25=0 14..12=2 6..2=0x0C 1..0=3"
+  - name: sltu
+    format: "rd rs1 rs2 31..25=0 14..12=3 6..2=0x0C 1..0=3"
+  - name: xor
+    format: "rd rs1 rs2 31..25=0 14..12=4 6..2=0x0C 1..0=3"
+  - name: srl
+    format: "rd rs1 rs2 31..25=0 14..12=5 6..2=0x0C 1..0=3"
+  - name: sra
+    format: "rd rs1 rs2 31..25=32 14..12=5 6..2=0x0C 1..0=3"
+  - name: or
+    format: "rd rs1 rs2 31..25=0 14..12=6 6..2=0x0C 1..0=3"
+  - name: and
+    format: "rd rs1 rs2 31..25=0 14..12=7 6..2=0x0C 1..0=3"
+  - name: fence
+    format: "fm pred succ rs1 14..12=0 rd 6..2=0x03 1..0=3"
+  - name: fence_tso
+    format: "31..28=8 27..24=3 23..20=3 rs1 14..12=0 rd 6..2=0x03 1..0=3"
+    pseudo_op: true
+  - name: pause
+    format: "31..28=0 27..24=1 23..20=0 19..15=0 14..12=0 11..7=0 6..2=0x03 1..0=3"
+    pseudo_op: true
+  - name: ecall
+    format: "31..20=0x000 19..7=0 6..2=0x1C 1..0=3"
+  - name: ebreak
+    format: "31..20=0x001 19..7=0 6..2=0x1C 1..0=3"
+  - name: scall
+    format: "11..7=0 19..15=0 31..20=0x000 14..12=0 6..2=0x1C 1..0=3"
+    pseudo_op: true
+  - name: sbreak
+    format: "11..7=0 19..15=0 31..20=0x001 14..12=0 6..2=0x1C 1..0=3"
+    pseudo_op: true
