@@ -1,3 +1,7 @@
+
+**docs/contributing.md**
+
+```markdown
 # Contributing to the RISC-V Opcodes Repository
 
 ## How to Contribute
@@ -12,3 +16,8 @@ Please adhere to our [Code of Conduct](CODE_OF_CONDUCT.md) when contributing to 
 ## Coding Standards
 - Follow the existing coding style.
 - Document all new code with clear comments and docstrings.
+
+## Best Practices for Adding New Opcodes
+1. **YAML Format**: Add new opcode definitions in the appropriate YAML file in the `modules/` directory.
+2. **Script Execution**: Run the `generate_opcodes.py` script to update the opcode definitions.
+3. **Testing**: Ensure all changes pass the CI tests before submitting a pull request.

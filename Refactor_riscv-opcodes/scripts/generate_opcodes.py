@@ -1,4 +1,5 @@
 import yaml
+import os
 
 def load_instructions(file_path):
     with open(file_path, 'r') as file:
@@ -7,10 +8,7 @@ def load_instructions(file_path):
 def generate_opcodes(instructions):
     opcodes = []
     for instruction in instructions:
-        if instruction.get('pseudo_op', False):
-            opcodes.append(f"$pseudo_op rv_i::{instruction['name']} {instruction['format']}")
-        else:
-            opcodes.append(f"{instruction['name']} {instruction['format']}")
+        opcodes.append(f"{instruction['name']} {instruction['format']}")
     return opcodes
 
 def write_opcodes(opcodes, output_path):
@@ -19,6 +17,8 @@ def write_opcodes(opcodes, output_path):
             file.write(opcode + '\n')
 
 if __name__ == "__main__":
-    instructions = load_instructions('modules/rv_i.yaml')['instructions']
-    opcodes = generate_opcodes(instructions)
-    write_opcodes(opcodes, 'rv_i')
+    modules = ['rv_i', 'rv_a']
+    for module in modules:
+        instructions = load_instructions(f'modules/{module}.yaml')['instructions']
+        opcodes = generate_opcodes(instructions)
+        write_opcodes(opcodes, module)
